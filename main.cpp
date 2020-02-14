@@ -13,9 +13,9 @@ using namespace std;
 ofstream myfile;
 ifstream infile;
 
-/// person - base class . with polymorphic ablity ,virtual methods getdetails most notable
 
-class Person {                   // base class
+
+class Person {                   
 public:
     string firstName;
     string lastName;
@@ -42,7 +42,7 @@ public:
 };
 
 
-/// customer inherit from person ,(inherited class , parent class)
+
 class Customer : public Person {
 
 public:
@@ -69,7 +69,7 @@ public:
         cout << "nationality : " << nationality << endl;
     }
 };
-/// customer account derived from customer, which means all account is attached to a customer
+
 
 class AccountCustomer : public Customer {
 
@@ -95,12 +95,12 @@ public:
     }
 
     void getAccountDetails() {
-        //cout << endl << "***************************************" << endl;
+        
         cout << "\n\nMr/Mrs :" << firstName << endl;
         cout << "total balance : " << balance << endl;
         cout << "ac no : " << accountNumber << endl;
         cout << "ac type :" << accountType << endl;
-    //    cout << "***************************************" << endl;
+    
 
     }
 
@@ -141,7 +141,7 @@ int randrange(int low, int high) {
     return rand() % (high - low + 1) + low; // NOLINT
 }
 
-/// bank with the operation on accounts , vector used as data structure to store the accounts after reading from text file
+
 class Bank {
 public:
     vector<AccountCustomer> accounts;
@@ -221,11 +221,11 @@ public:
         bool found = false;
         for (int i = 0; i < accounts.size(); ++i) {
             if (accountNumber == accounts[i].getAccountNumber()) {
-               // cout << "__________________________________________________" << endl;
+               
 
                 accounts[i].getAccountDetails();
                 accounts[i].getDetails();
-               // cout << "__________________________________________________" << endl;
+               
                 found = true;
             }
         }
@@ -257,14 +257,13 @@ public:
     }
 
     void listAll() {
-       // cout << "******************************************" << endl;
-
+       
         for (int i = 0; i < accounts.size(); ++i) {
             accounts[i].getAccountDetails();
         }
 
     }
-    // saving data in record.txt
+    
 
     void saveToFile() {
         myfile.open("record.txt");
@@ -296,7 +295,7 @@ public:
 
 };
 
-/// admin account derived from class person , polymorphic ability also
+
 class AdminAccount : public Person {
 
 private:
@@ -312,8 +311,7 @@ public:
     }
 
     void getDetails() override {
-      //  cout << " name is :" << firstName << " " << lastName << endl;
-      //  cout << "username is " << username << endl;
+     
     }
 
     const string &getPassword() const {
@@ -339,8 +337,7 @@ public:
             cout << "5. Show account details" << endl;
             cout << "6. Delete account" << endl;
             cout << "0. RETURN" << endl;
-            //cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << endl;
-           // cout << "perform another operation or press 0 to exit" << endl;
+            
             cin >> operation;
             switch (operation) {
                 case 1:
@@ -384,7 +381,7 @@ public:
         string accountType;
         Customer customer("dummmy", "dumm", 20, "ibadan", "22-02");
 
-        Person *person = &customer;   /// polymorphosim  using the reference of person to get a customer
+        Person *person = &customer;   
         cout << "first name " << endl;
         cin >> person->firstName;
         cout << "last Name" << endl;
@@ -458,8 +455,7 @@ int main() {
         cout << "\n\n1.ADMIN" << endl;
         cout << "2.ACCOUNT HOLDER" << endl;
         cout << "0.QUIT" << endl;
-       // cout << "_________________________________________" << endl;
-       // cout << " enter desire operation _" << endl;
+       
         cin >> commandIn;
         string password;
         string username;
@@ -488,11 +484,11 @@ int main() {
                     if (bank.existInRecord(number)) {
                         do {
 
-                         //   cout << "__________________________________________________" << endl;
+                         
                             cout << "\n1. Account details " << endl;
                             cout << "2. balance inquiry " << endl;
                             cout << "0. LOG-OUT " << endl;
-                          //  cout << "__________________________________________________" << endl;
+                         
                             cin >> operation;
 
                             switch (operation) {
